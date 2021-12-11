@@ -24,8 +24,9 @@ public class MemoryMemberRepository implements MemberRepository{
     @Override
     public Optional<Member> findByName(String name) {
         return store.values().stream()
-                .filter(member -> member.getName().equals(name))
-                .findAny();
+                .filter(member -> member.getName().equals(name)) // loop 돌리는거임. 자바8
+                .findAny(); // 찾으면 바로 반환.
+        // 루프를 끝까지 돌아도 못찾으면 Null 반환.
     }
 
     @Override
